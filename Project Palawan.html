@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Beauty of El Nido</title>
+    <style>
+      :root {
+        --sky: #f6d7a7;
+        --sand: #f4efe6;
+        --sea: #0d4f6c;
+        --deep-sea: #062d3c;
+        --gold: #f7b267;
+        --white: #fffdf9;
+        --text: #153243;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background:
+          linear-gradient(180deg, rgba(9, 36, 55, 0.25), rgba(9, 36, 55, 0.65)),
+          url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80") center/cover fixed no-repeat;
+        color: var(--white);
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Pacifico&display=swap');
+
+      header {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 20px;
+        background:
+          linear-gradient(180deg, rgba(8, 32, 40, 0.3), rgba(8, 32, 40, 0.7)),
+          radial-gradient(circle at center, rgba(247, 178, 103, 0.35), transparent 35%);
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+        backdrop-filter: blur(1px);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+      }
+
+      .top-label {
+        display: inline-block;
+        margin-bottom: 18px;
+        padding: 10px 22px;
+        border: 1px solid rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.08);
+        border-radius: 999px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: bold;
+        color: #fce6b7;
+        box-shadow: 0 0 18px rgba(255,255,255,0.15);
+        animation: floatLabel 4s ease-in-out infinite;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: 'Pacifico', cursive;
+        font-size: clamp(3rem, 7vw, 6rem);
+        letter-spacing: 1px;
+        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.45);
+        color: #fff5dc;
+      }
+
+      .subtitle {
+        margin-top: 18px;
+        font-size: 1.2rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.85);
+      }
+
+      .wave {
+        position: absolute;
+        bottom: -30px;
+        left: -10%;
+        width: 120%;
+        height: 120px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 50% 50% 0 0;
+        animation: waveMotion 10s ease-in-out infinite alternate;
+      }
+
+      .wave::before,
+      .wave::after {
+        content: "";
+        position: absolute;
+        width: 120%;
+        height: 100%;
+        left: -10%;
+        background: rgba(96, 200, 255, 0.12);
+        border-radius: 44% 56% 0 0;
+      }
+
+      .wave::before {
+        bottom: 20px;
+        animation: waveDrift 8s linear infinite;
+      }
+
+      .wave::after {
+        bottom: 0;
+        animation: waveDrift 12s linear infinite reverse;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .info-item {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px;
+        padding: 18px;
+      }
+
+      .info-item strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #f8d39a;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(11, 45, 56, 0.6);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        text-align: center;
+        padding: 16px 20px;
+      }
+
+      nav a {
+        color: var(--white);
+        text-decoration: none;
+        margin: 0 18px;
+        font-weight: bold;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      main {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 40px 20px 60px;
+      }
+
+      section {
+        margin-bottom: 32px;
+        scroll-margin-top: 86px;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255,255,255,0.15);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 22px;
+      }
+
+      h2 {
+        margin-top: 0;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        color: var(--white);
+      }
+
+      p, li {
+        font-size: 1.06rem;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.9);
+      }
+
+      .intro img {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+        border: 1px solid rgba(255,255,255,0.18);
+      }
+
+      .intro-media {
+        display: grid;
+        gap: 16px;
+      }
+
+      .intro-video {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 18px;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+      }
+
+      .gallery img:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 22px 40px rgba(0,0,0,0.28);
+      }
+
+      .attractions-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .attraction-card {
+        overflow: hidden;
+        background: rgba(255,255,255,0.09);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 18px;
+        box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+      }
+
+      .attraction-card img {
+        display: block;
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .attraction-card h3 {
+        margin: 0;
+        padding: 14px 16px 16px;
+        color: #f8d39a;
+        font-size: 1.25rem;
+      }
+
+      .suggestion-form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .suggestion-form label {
+        font-weight: bold;
+        color: #f8d39a;
+      }
+
+      .suggestion-form input,
+      .suggestion-form textarea {
+        width: 100%;
+        margin-top: 8px;
+        padding: 13px 15px;
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.12);
+        color: var(--white);
+        font: inherit;
+      }
+
+      .suggestion-form input::placeholder,
+      .suggestion-form textarea::placeholder {
+        color: rgba(255,255,255,0.65);
+      }
+
+      .suggestion-form textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .suggestion-form button {
+        width: fit-content;
+        padding: 12px 22px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--gold);
+        color: var(--deep-sea);
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      footer {
+        background: rgba(8, 34, 41, 0.8);
+        padding: 24px;
+        text-align: center;
+        color: rgba(255,255,255,0.8);
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+
+      @keyframes waveMotion {
+        0% { transform: translateX(-2%) scaleY(1); }
+        100% { transform: translateX(2%) scaleY(1.15); }
+      }
+
+      @keyframes waveDrift {
+        0% { transform: translateX(0) rotate(0deg); }
+        50% { transform: translateX(-5%) rotate(2deg); }
+        100% { transform: translateX(0) rotate(0deg); }
+      }
+
+      @keyframes floatLabel {
+        0%, 100% { transform: translateY(0); box-shadow: 0 0 18px rgba(255,255,255,0.15); }
+        50% { transform: translateY(-5px); box-shadow: 0 0 26px rgba(255,255,255,0.25); }
+      }
+
+      @media (max-width: 768px) {
+        section {
+          scroll-margin-top: 128px;
+        }
+
+        .intro,
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+
+        nav a {
+          display: inline-block;
+          margin: 6px 10px;
+        }
+
+        .attractions-gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="hero-content">
+        <div class="top-label">9 - St. Teresa Group 1 Website Presentation</div>
+        <h1>The Beauty of El Nido</h1>
+        <div class="subtitle">Palawan, Philippines</div>
+      </div>
+      <div class="wave"></div>
+    </header>
+
+    <nav>
+      <a class="redirect-button" href="#about">About</a>
+      <a class="redirect-button" href="#highlights">Highlights</a>
+      <a class="redirect-button" href="#gallery">Gallery</a>
+      <a class="redirect-button" href="#attractions">Attractions</a>
+      <a class="redirect-button" href="#festivals">Festivals</a>
+      <a class="redirect-button" href="#cuisines">Cuisines</a>
+      <a class="redirect-button" href="#culture">Culture</a>
+      <a class="redirect-button" href="#local-products">Local Products</a>
+      <a class="redirect-button" href="#landscape">Landscape</a>
+      <a class="redirect-button" href="#visit">Visit</a>
+    </nav>
+
+    <main>
+      <section id="about" class="intro">
+        <div class="glass">
+          <h2>Palawan: The Last Frontier</h2>
+          <p>
+            Palawan is a long, narrow archipelagic province known as the “Last Frontier”
+            of the Philippines. It is famous for its pristine beaches, dramatic limestone
+            cliffs, hidden lagoons, underground rivers, rich biodiversity, and crystal-clear waters.
+          </p>
+          <p>
+            Located in the westernmost part of the Philippines, Palawan stretches between
+            the South China Sea and the Sulu Sea, making it one of the country's most
+            unique island destinations.
+          </p>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <strong>Name of the destination</strong>
+              Palawan
+            </div>
+            <div class="info-item">
+              <strong>Province/Region</strong>
+              Province of Palawan, MIMAROPA Region
+            </div>
+            <div class="info-item">
+              <strong>Country</strong>
+              Philippines
+            </div>
+            <div class="info-item">
+              <strong>Location</strong>
+              Westernmost province of the Philippines
+            </div>
+          </div>
+        </div>
+
+        <div class="intro-media">
+          <img
+            src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1000&q=80"
+            alt="Palawan coast and turquoise water"
+          />
+          <iframe
+            class="intro-video"
+            src="https://www.youtube-nocookie.com/embed/aWOdllk6u2U"
+            title="Palawan destination video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section id="highlights" class="glass">
+        <h2>Why We Selected Palawan</h2>
+        <p>
+          Palawan was chosen because it is widely regarded as one of the most beautiful
+          and unique tourist destinations in the Philippines and the world. It offers a
+          perfect combination of natural wonders, adventure activities, and cultural
+          experiences that make it ideal for promotion as a top eco-tourism destination.
+        </p>
+        <ul>
+          <li>Unspoiled beaches and hidden coves</li>
+          <li>World-class island landscapes and limestone formations</li>
+          <li>Rich biodiversity and marine life</li>
+          <li>Excellent eco-tourism and adventure opportunities</li>
+        </ul>
+      </section>
+
+      <section id="gallery">
+        <h2>Captured in Color</h2>
+        <div class="gallery">
+          <img
+            src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80"
+            alt="Beach view"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=80"
+            alt="Island cliffs"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+            alt="Ocean horizon"
+          />
+        </div>
+      </section>
+
+      <section id="attractions">
+        <h2>Attractions</h2>
+        <div class="attractions-gallery">
+          <article class="attraction-card">
+            <img
+              src="Attractions/598767657_1256671279850539_4881106045882369578_n.jpg"
+              alt="Limestone cliffs and boats in El Nido"
+            />
+            <h3>El Nido Limestone Cliffs</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Attractions/806783478_2875451219483926_7331760808158335712_n.jpg"
+              alt="Boat entering an underground river cave"
+            />
+            <h3>Puerto Princesa Underground River</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Attractions/808079038_1065816196296651_3608974993173774829_n.jpg"
+              alt="Visitors exploring an underground river"
+            />
+            <h3>Underground River Cave Tour</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Attractions/809645403_1098175726162546_2902257325945244707_n.jpg"
+              alt="Aerial view of a turquoise island lagoon"
+            />
+            <h3>El Nido Island Lagoons</h3>
+          </article>
+        </div>
+      </section>
+
+      <section id="festivals">
+        <h2>Festivals of Palawan</h2>
+        <div class="attractions-gallery">
+          <article class="attraction-card">
+            <img
+              src="Festivals/377153175_1641878166637620_8494818294310917787_n.jpg"
+              alt="Festival participant wearing a flower-covered costume"
+            />
+            <h3>Flower Parade Celebration</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Festivals/804443072_2329880234420746_6988288711716123174_n.jpg"
+              alt="Colorful group performing a cultural festival dance"
+            />
+            <h3>Colorful Cultural Dance</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Festivals/810777421_1117728204112034_430840640153174801_n.jpg"
+              alt="Festival dancers performing in mud during a celebration"
+            />
+            <h3>Molang Nanang Festival</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Festivals/813398844_1098161055946604_6059648306716344056_n.jpg"
+              alt="Traditional dancers performing in colorful costumes"
+            />
+            <h3>Traditional Street Dance</h3>
+          </article>
+        </div>
+      </section>
+
+      <section id="cuisines">
+        <h2>Flavors of Palawan</h2>
+        <div class="attractions-gallery">
+          <article class="attraction-card">
+            <img
+              src="Cuisines/802535661_3320171378175037_7247973746352357322_n.jpg"
+              alt="Traditional Filipino dishes arranged on a shared table"
+            />
+            <h3>Palawan Filipino Feast</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Cuisines/810215000_1735118867793694_748346516614283234_n.jpg"
+              alt="Fresh red crabs served with grilled fish"
+            />
+            <h3>Fresh Crab and Grilled Fish</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Cuisines/811615837_1052980614214343_8536065910333784666_n.jpg"
+              alt="Lato sea grapes salad with tomato and onion"
+            />
+            <h3>Lato Seaweed Salad</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Cuisines/812696668_1067503209314272_3368038610214370867_n.jpg"
+              alt="A variety of Filipino and island-style dishes on a dining table"
+            />
+            <h3>Island-Style Filipino Cuisine</h3>
+          </article>
+        </div>
+      </section>
+
+      <section id="culture">
+        <h2>Palawan Culture</h2>
+        <div class="attractions-gallery">
+          <article class="attraction-card">
+            <img
+              src="Culture/808971002_1589737452704350_2285187761272127463_n.jpg"
+              alt="Palawan tribal performers in traditional clothing"
+            />
+            <h3>Palawan Tribal Dance</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Culture/810051187_1813025239882410_3181492626557943296_n.jpg"
+              alt="Artisan weaving a traditional basket by hand"
+            />
+            <h3>Handwoven Rattan Craft</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Culture/812611690_2180790035815228_3256595896288311824_n.jpg"
+              alt="Traditional musician playing a gong at a cultural stall"
+            />
+            <h3>Traditional Gong Music</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Culture/814870362_1078809271191919_3884616066048367539_n.jpg"
+              alt="Palawan artisan playing a traditional bamboo instrument"
+            />
+            <h3>Bamboo Music Heritage</h3>
+          </article>
+        </div>
+      </section>
+
+      <section id="local-products">
+        <h2>Local Products of Palawan</h2>
+        <div class="attractions-gallery">
+          <article class="attraction-card">
+            <img
+              src="Local Products/805762465_2187275292188120_5543519388775407382_n.jpg"
+              alt="Jar of Palawan wild honey yogurt"
+            />
+            <h3>Palawan Wild Honey Yogurt</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Local Products/808397174_1586929803208180_4110840685824204641_n.jpg"
+              alt="Handwoven baskets and bags displayed in a shop"
+            />
+            <h3>Handwoven Baskets and Bags</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Local Products/808461803_1399740732321356_6865755999398596581_n.jpg"
+              alt="Colorful Binuatan woven fans"
+            />
+            <h3>Binuatan Woven Fans</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Local Products/814426840_1911744026875783_3015848256234622631_n.jpg"
+              alt="Jars of locally made cashew butter"
+            />
+            <h3>Palawan Cashew Butter</h3>
+          </article>
+        </div>
+      </section>
+
+      <section id="landscape">
+        <h2>Landscapes of Palawan</h2>
+        <div class="attractions-gallery">
+          <article class="attraction-card">
+            <img
+              src="Landscape/808942675_1884359472942913_5106406019597876299_n.jpg"
+              alt="El Nido limestone cliffs surrounding turquoise water and boats"
+            />
+            <h3>El Nido Limestone Cliffs</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Landscape/809449897_1992150268113746_6341905448742133747_n.jpg"
+              alt="Aerial view of a blue lagoon surrounded by limestone islands"
+            />
+            <h3>Blue Lagoon Panorama</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Landscape/813765181_879327685148459_4481403374995685785_n.jpg"
+              alt="Secluded white-sand beach between green limestone cliffs"
+            />
+            <h3>Hidden Beach Cove</h3>
+          </article>
+
+          <article class="attraction-card">
+            <img
+              src="Landscape/813765225_28739495092335039_4356468285214604194_n.jpg"
+              alt="Historic coastal fortress overlooking Palawan waters"
+            />
+            <h3>Coastal Heritage Fortress</h3>
+          </article>
+        </div>
+      </section>
+
+      <section id="visit" class="glass">
+        <h2>Why El Nido?</h2>
+        <p>
+          El Nido is one of Palawan’s most iconic destinations, celebrated for its
+          dramatic limestone cliffs, hidden lagoons, and breathtaking island-hopping
+          experiences. It captures the true beauty of Palawan in one unforgettable
+          setting, making it a standout symbol of the province’s natural charm.
+        </p>
+        <p>
+          The destination is a perfect representation of what makes Palawan special:
+          stunning scenery, adventure, and a connection to nature that few places can match.
+        </p>
+      </section>
+
+      <section id="suggestions" class="glass">
+        <h2>Share Your Suggestions</h2>
+        <p>Have an idea to improve our website? Send us your suggestion.</p>
+        <form
+          class="suggestion-form"
+          action="mailto:timomarrei@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <label for="suggestion-email">
+            Email address
+            <input
+              id="suggestion-email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+            />
+          </label>
+
+          <label for="suggestion-message">
+            Suggestion
+            <textarea
+              id="suggestion-message"
+              name="suggestion"
+              placeholder="Write your suggestion here..."
+              required
+            ></textarea>
+          </label>
+
+          <button type="submit">Send Suggestion</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Palawan | The Beauty of El Nido</p>
+      <p>Website Credits: Timothy Omar Rei A. Barquilla | Coder</p>
+      <p>Contact Number: 09949144143</p>
+    </footer>
+
+  </body>
+</html>
